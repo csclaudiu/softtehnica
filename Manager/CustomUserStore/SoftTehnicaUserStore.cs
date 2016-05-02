@@ -6,6 +6,7 @@ using System.Web;
 using System.Data;
 using System.Threading.Tasks;
 using AutoMapper;
+using DATA;
 
 namespace Manager.CustomUserStore
 {
@@ -21,7 +22,21 @@ namespace Manager.CustomUserStore
 
         public Task AddToRoleAsync(SoftTehnicaUser user, string roleName)
         {
-            throw new NotImplementedException();
+            var dbUser = Repository.users.FirstOrDefault(u => u.id == user.Id);
+            role dbRole = null;
+            switch(roleName)
+            {
+                case "Management":
+                    dbRole = Repository.roles.First(r => r.role_name == roleName);
+                    break;
+                case "Operator":
+                    dbRole = Repository.roles.First(r => r.role_name == roleName);
+                    break;
+            }
+            dbUser.role = dbRole;
+            Repository.SaveChanges();
+            // throw new NotImplementedException();
+            return Task.FromResult<object>(null);
         }
 
         public Task CreateAsync(SoftTehnicaUser user)
@@ -167,17 +182,17 @@ namespace Manager.CustomUserStore
 
         public Task SetEmailConfirmedAsync(SoftTehnicaUser user, bool confirmed)
         {
-            throw new NotImplementedException();
+            return Task.FromResult<object>(null);
         }
 
         public Task SetLockoutEnabledAsync(SoftTehnicaUser user, bool enabled)
         {
-            throw new NotImplementedException();
+            return Task.FromResult<object>(null);
         }
 
         public Task SetLockoutEndDateAsync(SoftTehnicaUser user, DateTimeOffset lockoutEnd)
         {
-            throw new NotImplementedException();
+            return Task.FromResult<object>(null);
         }
 
         public Task SetPasswordHashAsync(SoftTehnicaUser user, string passwordHash)
@@ -193,7 +208,7 @@ namespace Manager.CustomUserStore
 
         public Task UpdateAsync(SoftTehnicaUser user)
         {
-            throw new NotImplementedException();
+            return Task.FromResult<object>(null);
         }
     }
 }

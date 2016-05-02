@@ -8,7 +8,6 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Http.ModelBinding;
 using Microsoft.AspNet.Identity;
-//using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
@@ -322,6 +321,7 @@ namespace API.Controllers
 
             return logins;
         }
+        /* Operators are only added from manager tool
 
         // POST api/Account/Register
         [AllowAnonymous]
@@ -377,7 +377,7 @@ namespace API.Controllers
             }
             return Ok();
         }
-
+        */
         protected override void Dispose(bool disposing)
         {
             if (disposing && _userManager != null)

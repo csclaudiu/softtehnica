@@ -9,11 +9,15 @@ namespace Restaurant.Services
 {
     public class RelayCommand<T> : ICommand
     {
-        public event EventHandler CanExecuteChanged;
+        public event EventHandler CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
 
         public bool CanExecute(object parameter)
         {
-            return true;
+            return _CanExecute == null ? true : _CanExecute((T)parameter);
         }
 
         public void Execute(object parameter)
@@ -33,7 +37,14 @@ namespace Restaurant.Services
             _ParVMAction = pAction;
         }
 
+        public RelayCommand(Action<T> pAction, Predicate<T> pCanExecute)
+        {
+            _ParVMAction = pAction;
+            _CanExecute = pCanExecute;
+        }
+
         private Action _VMAction;
         private Action<T> _ParVMAction;
+        private Predicate<T> _CanExecute;
     }
 }

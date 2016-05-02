@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Restaurant.ViewModels
 {
@@ -18,11 +19,13 @@ namespace Restaurant.ViewModels
             orderedProducts.CollectionChanged += OrderedProducts_CollectionChanged;
             cmdAddToMenu = new RelayCommand<ProductDto>(AddProductToMenu);
             cmdRemoveFromMenu = new RelayCommand<ProductDto>(RemoveProductFromMenu);
+            cmdSaveOrder = new RelayCommand<ClientDto>(SaveOrder, canSaveOrder);
         }
 
         private void OrderedProducts_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             Notify("Total");
+            CommandManager.InvalidateRequerySuggested();
         }
 
         public ObservableCollection<ProductDto> products { get; set; }
@@ -32,7 +35,7 @@ namespace Restaurant.ViewModels
         public ClientDto selectedClient
         {
             get { return _selectedClient; }
-            set { _selectedClient = value; Notify("selectedClient"); }
+            set { _selectedClient = value; Notify("selectedClient"); CommandManager.InvalidateRequerySuggested(); }
         }
 
         public decimal Total
@@ -51,6 +54,21 @@ namespace Restaurant.ViewModels
         private void RemoveProductFromMenu(ProductDto item)
         {
             orderedProducts.Remove(item);
+        }
+        public RelayCommand<ClientDto> cmdSaveOrder { get; set; }
+        private void SaveOrder(ClientDto client)
+        {
+
+        }
+        private bool canSaveOrder(ClientDto client)
+        {
+            bool retValue = false;
+            if (client != null)
+            {
+                if(orderedProducts.Count > 0)
+                    retValue = true;
+            }
+            return retValue;
         }
     }
 }

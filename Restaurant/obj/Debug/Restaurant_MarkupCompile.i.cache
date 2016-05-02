@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Claudiu\documents\visual studio 2015\Projects\SoftTehnica\Restaurant\obj\Debug\
+C:\Users\Claudiu\Documents\Visual Studio 2015\Projects\SoftTehnica\softtehnica\Restaurant\obj\Debug\
 Restaurant
 none
 false
 DEBUG;TRACE
-C:\Users\Claudiu\documents\visual studio 2015\Projects\SoftTehnica\Restaurant\App.xaml
+C:\Users\Claudiu\Documents\Visual Studio 2015\Projects\SoftTehnica\softtehnica\Restaurant\App.xaml
 6-1015335805
 
 291167700829
-1788333087
+17-1670808267
 Clients.xaml;Dashboard.xaml;Locations.xaml;Login.xaml;MainWindow.xaml;OrdersHistory.xaml;
 
-False
+True
 
