@@ -1,0 +1,20 @@
+﻿@model Manager.Models.clientsActivityVM
+
+@{
+    ViewBag.Title = "ClientActivity";
+}
+
+<h2>Top clients activity</h2>
+
+<table class="table">
+    @foreach (var rankItem in Model.globalActivity)
+    {
+        <tr>
+            <td>@rankItem.firstname</td>
+            <td>@rankItem.lastname</td>
+            <td>@rankItem.no_visits visits</td>
+        </tr>
+    }
+</table>
+
+

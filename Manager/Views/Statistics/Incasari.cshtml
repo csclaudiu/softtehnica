@@ -1,0 +1,42 @@
+﻿@model Manager.Models.incasariVM
+
+@{
+    ViewBag.Title = "Incasari";
+}
+
+<h2>Incasari</h2>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Locatie</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var incasarePerLocatie in Model.totals)
+        {
+
+            <tr>
+                <td>
+                    @Html.ActionLink(incasarePerLocatie.location_name, "ClientLocationActivity", new { locationid = incasarePerLocatie.id })
+                </td>
+                <td>
+                    @incasarePerLocatie.Total.Value.ToString("N2") lei
+                </td>
+            </tr>
+        }
+        <tr class="table-danger">
+            <td >
+                <p style="float:right;font-weight:bold">Total</p>
+            </td>
+            <td> 
+                <b>@Model.totalIncasari.ToString("N2") lei</b>
+            </td>
+        </tr>
+    </tbody>
+
+
+
+</table>
+

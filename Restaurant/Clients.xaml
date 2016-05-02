@@ -1,0 +1,52 @@
+﻿<Window x:Class="Restaurant.Clients"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Restaurant"
+        mc:Ignorable="d"
+        Title="Clients" Height="300" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <ListView x:Name="avaibleClients" ItemsSource="{Binding clients}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionChanged="avaibleClients_SelectionChanged">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid HorizontalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding firstname}" Grid.Column="0" />
+                        <TextBlock Text="{Binding lastname}" HorizontalAlignment="Right" Grid.Column="1" />
+                        <TextBlock Text="{Binding email}" HorizontalAlignment="Right" Grid.Column="2" />
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="First name" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+            <TextBlock Grid.Row="1" Text="Last name" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+            <TextBlock Grid.Row="2" Text="Email" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+
+            <TextBox x:Name="txtFirstName" Text="{Binding firstname, Mode=TwoWay}" Grid.Column="1"></TextBox>
+            <TextBox x:Name="txtLastName" Text="{Binding lastname, Mode=TwoWay}" Grid.Column="1" Grid.Row="1"></TextBox>
+            <TextBox x:Name="txtEmail" Text="{Binding email, Mode=TwoWay}" Grid.Column="1" Grid.Row="2"></TextBox>
+
+            <Button x:Name="btnNew" Content="New" Grid.Row="3" Grid.Column="1" Click="btnNew_Click" />
+        </Grid>
+    </Grid>
+</Window>

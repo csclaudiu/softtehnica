@@ -1,0 +1,283 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="softtehnicaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="client">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="firstname" Type="nvarchar" MaxLength="50" />
+    <Property Name="lastname" Type="nvarchar" MaxLength="50" />
+    <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="location">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="location_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="order">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="date" Type="datetime" Nullable="false" />
+    <Property Name="comment" Type="nvarchar" MaxLength="500" />
+    <Property Name="clientid" Type="int" Nullable="false" />
+    <Property Name="operatorid" Type="int" Nullable="false" />
+    <Property Name="locationid" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="orderitems">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="orderid" Type="int" Nullable="false" />
+    <Property Name="productid" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="price" Type="money" Nullable="false" />
+  </EntityType>
+  <EntityType Name="role">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="role_name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="password" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
+    <Property Name="roleid" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'softtehnica.dbo.v_ClientGlobalActivity' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="v_ClientGlobalActivity">
+    <Key>
+      <PropertyRef Name="clientid" />
+    </Key>
+    <Property Name="clientid" Type="int" Nullable="false" />
+    <Property Name="firstname" Type="nvarchar" MaxLength="50" />
+    <Property Name="lastname" Type="nvarchar" MaxLength="50" />
+    <Property Name="no_visits" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'softtehnica.dbo.v_ClientLocationActivity' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="v_ClientLocationActivity">
+    <Key>
+      <PropertyRef Name="clientid" />
+      <PropertyRef Name="locationid" />
+      <PropertyRef Name="email" />
+    </Key>
+    <Property Name="clientid" Type="int" Nullable="false" />
+    <Property Name="locationid" Type="int" Nullable="false" />
+    <Property Name="firstname" Type="nvarchar" MaxLength="50" />
+    <Property Name="lastname" Type="nvarchar" MaxLength="50" />
+    <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="no_visits" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'softtehnica.dbo.v_OrderProducts' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="v_OrderProducts">
+    <Key>
+      <PropertyRef Name="orderid" />
+      <PropertyRef Name="date" />
+      <PropertyRef Name="clientid" />
+      <PropertyRef Name="operatorid" />
+      <PropertyRef Name="locationid" />
+      <PropertyRef Name="orderitemid" />
+      <PropertyRef Name="productid" />
+      <PropertyRef Name="name" />
+      <PropertyRef Name="price" />
+    </Key>
+    <Property Name="orderid" Type="int" Nullable="false" />
+    <Property Name="date" Type="datetime" Nullable="false" />
+    <Property Name="comment" Type="nvarchar" MaxLength="500" />
+    <Property Name="clientid" Type="int" Nullable="false" />
+    <Property Name="operatorid" Type="int" Nullable="false" />
+    <Property Name="locationid" Type="int" Nullable="false" />
+    <Property Name="orderitemid" Type="int" Nullable="false" />
+    <Property Name="productid" Type="int" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="price" Type="money" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'softtehnica.dbo.v_OrderTotals' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="v_OrderTotals">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="location_name" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="location_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Total" Type="money" />
+  </EntityType>
+  <Association Name="FK_order_client">
+    <End Role="client" Type="Self.client" Multiplicity="1" />
+    <End Role="order" Type="Self.order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="client">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order">
+        <PropertyRef Name="clientid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_order_location">
+    <End Role="location" Type="Self.location" Multiplicity="1" />
+    <End Role="order" Type="Self.order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="location">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order">
+        <PropertyRef Name="locationid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_order_operator">
+    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="order" Type="Self.order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order">
+        <PropertyRef Name="operatorid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_orderitems_order">
+    <End Role="order" Type="Self.order" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="orderitems" Type="Self.orderitems" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="order">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="orderitems">
+        <PropertyRef Name="orderid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_orderitems_product">
+    <End Role="product" Type="Self.product" Multiplicity="1" />
+    <End Role="orderitems" Type="Self.orderitems" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="orderitems">
+        <PropertyRef Name="productid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_user_role">
+    <End Role="role" Type="Self.role" Multiplicity="1" />
+    <End Role="user" Type="Self.user" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="role">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="user">
+        <PropertyRef Name="roleid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="softtehnicaModelStoreContainer">
+    <EntitySet Name="client" EntityType="Self.client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="location" EntityType="Self.location" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="order" EntityType="Self.order" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="orderitems" EntityType="Self.orderitems" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="product" EntityType="Self.product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="role" EntityType="Self.role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="v_ClientGlobalActivity" EntityType="Self.v_ClientGlobalActivity" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [v_ClientGlobalActivity].[clientid] AS [clientid], 
+    [v_ClientGlobalActivity].[firstname] AS [firstname], 
+    [v_ClientGlobalActivity].[lastname] AS [lastname], 
+    [v_ClientGlobalActivity].[no_visits] AS [no_visits]
+    FROM [dbo].[v_ClientGlobalActivity] AS [v_ClientGlobalActivity]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="v_ClientLocationActivity" EntityType="Self.v_ClientLocationActivity" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [v_ClientLocationActivity].[clientid] AS [clientid], 
+    [v_ClientLocationActivity].[locationid] AS [locationid], 
+    [v_ClientLocationActivity].[firstname] AS [firstname], 
+    [v_ClientLocationActivity].[lastname] AS [lastname], 
+    [v_ClientLocationActivity].[email] AS [email], 
+    [v_ClientLocationActivity].[no_visits] AS [no_visits]
+    FROM [dbo].[v_ClientLocationActivity] AS [v_ClientLocationActivity]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="v_OrderProducts" EntityType="Self.v_OrderProducts" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [v_OrderProducts].[orderid] AS [orderid], 
+    [v_OrderProducts].[date] AS [date], 
+    [v_OrderProducts].[comment] AS [comment], 
+    [v_OrderProducts].[clientid] AS [clientid], 
+    [v_OrderProducts].[operatorid] AS [operatorid], 
+    [v_OrderProducts].[locationid] AS [locationid], 
+    [v_OrderProducts].[orderitemid] AS [orderitemid], 
+    [v_OrderProducts].[productid] AS [productid], 
+    [v_OrderProducts].[name] AS [name], 
+    [v_OrderProducts].[price] AS [price]
+    FROM [dbo].[v_OrderProducts] AS [v_OrderProducts]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="v_OrderTotals" EntityType="Self.v_OrderTotals" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [v_OrderTotals].[id] AS [id], 
+    [v_OrderTotals].[location_name] AS [location_name], 
+    [v_OrderTotals].[Total] AS [Total]
+    FROM [dbo].[v_OrderTotals] AS [v_OrderTotals]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_order_client" Association="Self.FK_order_client">
+      <End Role="client" EntitySet="client" />
+      <End Role="order" EntitySet="order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_order_location" Association="Self.FK_order_location">
+      <End Role="location" EntitySet="location" />
+      <End Role="order" EntitySet="order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_order_operator" Association="Self.FK_order_operator">
+      <End Role="user" EntitySet="user" />
+      <End Role="order" EntitySet="order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_orderitems_order" Association="Self.FK_orderitems_order">
+      <End Role="order" EntitySet="order" />
+      <End Role="orderitems" EntitySet="orderitems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_orderitems_product" Association="Self.FK_orderitems_product">
+      <End Role="product" EntitySet="product" />
+      <End Role="orderitems" EntitySet="orderitems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_user_role" Association="Self.FK_user_role">
+      <End Role="role" EntitySet="role" />
+      <End Role="user" EntitySet="user" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

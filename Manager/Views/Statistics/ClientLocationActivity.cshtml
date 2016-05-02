@@ -1,0 +1,20 @@
+﻿@model Manager.Models.clientLocationActivityVM
+
+@{
+    ViewBag.Title = "Clients activity on location " + ViewBag.location.location_name;
+}
+
+<h2>Clients activity on location @ViewBag.location.location_name</h2>
+
+<table class="table">
+    @foreach (var rankItem in Model.locationActivity)
+    {
+        <tr>
+            <td>@rankItem.firstname</td>
+            <td>@rankItem.lastname</td>
+            <td>@rankItem.email</td>
+            <td>@rankItem.no_visits visits</td>
+        </tr>
+    }
+</table>
+

@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="softtehnicaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="client">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="orders" Relationship="Self.FK_order_client" FromRole="client" ToRole="order" />
+  </EntityType>
+  <EntityType Name="order">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="comment" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="clientid" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="client" Relationship="Self.FK_order_client" FromRole="order" ToRole="client" />
+    <NavigationProperty Name="orderitems" Relationship="Self.FK_orderitems_order" FromRole="order" ToRole="orderitems" />
+    <Property Name="operatorid" Type="Int32" Nullable="false" />
+    <Property Name="locationid" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="location" Relationship="softtehnicaModel.FK_order_location" FromRole="order" ToRole="location" />
+    <NavigationProperty Name="user" Relationship="softtehnicaModel.FK_order_operator" FromRole="order" ToRole="user" />
+  </EntityType>
+  <EntityType Name="orderitem">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="orderid" Type="Int32" Nullable="false" />
+    <Property Name="productid" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="order" Relationship="Self.FK_orderitems_order" FromRole="orderitems" ToRole="order" />
+    <NavigationProperty Name="product" Relationship="Self.FK_orderitems_product" FromRole="orderitems" ToRole="product" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <NavigationProperty Name="orderitems" Relationship="Self.FK_orderitems_product" FromRole="product" ToRole="orderitems" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_order_client">
+    <End Role="client" Type="Self.client" Multiplicity="1" />
+    <End Role="order" Type="Self.order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="client">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order">
+        <PropertyRef Name="clientid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_orderitems_order">
+    <End Role="order" Type="Self.order" Multiplicity="1" />
+    <End Role="orderitems" Type="Self.orderitem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="order">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="orderitems">
+        <PropertyRef Name="orderid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_orderitems_product">
+    <End Role="product" Type="Self.product" Multiplicity="1" />
+    <End Role="orderitems" Type="Self.orderitem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="orderitems">
+        <PropertyRef Name="productid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="softtehnicaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="clients" EntityType="Self.client" />
+    <EntitySet Name="orders" EntityType="Self.order" />
+    <EntitySet Name="orderitems" EntityType="Self.orderitem" />
+    <EntitySet Name="products" EntityType="Self.product" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK_order_client" Association="Self.FK_order_client">
+      <End Role="client" EntitySet="clients" />
+      <End Role="order" EntitySet="orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_orderitems_order" Association="Self.FK_orderitems_order">
+      <End Role="order" EntitySet="orders" />
+      <End Role="orderitems" EntitySet="orderitems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_orderitems_product" Association="Self.FK_orderitems_product">
+      <End Role="product" EntitySet="products" />
+      <End Role="orderitems" EntitySet="orderitems" />
+    </AssociationSet>
+    <EntitySet Name="locations" EntityType="softtehnicaModel.location" />
+    <AssociationSet Name="FK_order_location" Association="softtehnicaModel.FK_order_location">
+      <End Role="location" EntitySet="locations" />
+      <End Role="order" EntitySet="orders" />
+    </AssociationSet>
+    <EntitySet Name="v_OrderProducts" EntityType="softtehnicaModel.v_OrderProducts" />
+    <EntitySet Name="roles" EntityType="softtehnicaModel.role" />
+    <EntitySet Name="users" EntityType="softtehnicaModel.user" />
+    <AssociationSet Name="FK_order_operator" Association="softtehnicaModel.FK_order_operator">
+      <End Role="user" EntitySet="users" />
+      <End Role="order" EntitySet="orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_user_role" Association="softtehnicaModel.FK_user_role">
+      <End Role="role" EntitySet="roles" />
+      <End Role="user" EntitySet="users" />
+    </AssociationSet>
+    <EntitySet Name="v_OrderTotals" EntityType="softtehnicaModel.v_OrderTotals" />
+    <EntitySet Name="v_ClientGlobalActivity" EntityType="softtehnicaModel.v_ClientGlobalActivity" />
+    <EntitySet Name="v_ClientLocationActivity" EntityType="softtehnicaModel.v_ClientLocationActivity" />
+  </EntityContainer>
+  <EntityType Name="location">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="location_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="orders" Relationship="softtehnicaModel.FK_order_location" FromRole="location" ToRole="order" />
+  </EntityType>
+  <Association Name="FK_order_location">
+    <End Type="softtehnicaModel.location" Role="location" Multiplicity="1" />
+    <End Type="softtehnicaModel.order" Role="order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="location">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order">
+        <PropertyRef Name="locationid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="v_OrderProducts">
+    <Key>
+      <PropertyRef Name="orderid" />
+      <PropertyRef Name="date" />
+      <PropertyRef Name="clientid" />
+      <PropertyRef Name="operatorid" />
+      <PropertyRef Name="locationid" />
+      <PropertyRef Name="orderitemid" />
+      <PropertyRef Name="productid" />
+      <PropertyRef Name="name" />
+      <PropertyRef Name="price" />
+    </Key>
+    <Property Name="orderid" Type="Int32" Nullable="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="comment" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="clientid" Type="Int32" Nullable="false" />
+    <Property Name="operatorid" Type="Int32" Nullable="false" />
+    <Property Name="locationid" Type="Int32" Nullable="false" />
+    <Property Name="orderitemid" Type="Int32" Nullable="false" />
+    <Property Name="productid" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+  </EntityType>
+  <EntityType Name="role">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="role_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="users" Relationship="softtehnicaModel.FK_user_role" FromRole="role" ToRole="user" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="roleid" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="orders" Relationship="softtehnicaModel.FK_order_operator" FromRole="user" ToRole="order" />
+    <NavigationProperty Name="role" Relationship="softtehnicaModel.FK_user_role" FromRole="user" ToRole="role" />
+  </EntityType>
+  <Association Name="FK_order_operator">
+    <End Type="softtehnicaModel.user" Role="user" Multiplicity="1" />
+    <End Type="softtehnicaModel.order" Role="order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="order">
+        <PropertyRef Name="operatorid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_user_role">
+    <End Type="softtehnicaModel.role" Role="role" Multiplicity="1" />
+    <End Type="softtehnicaModel.user" Role="user" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="role">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="user">
+        <PropertyRef Name="roleid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="v_OrderTotals">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="location_name" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="location_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Total" Type="Decimal" Precision="19" Scale="4" />
+  </EntityType>
+  <EntityType Name="v_ClientGlobalActivity">
+    <Key>
+      <PropertyRef Name="clientid" />
+    </Key>
+    <Property Name="clientid" Type="Int32" Nullable="false" />
+    <Property Name="firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="no_visits" Type="Int32" />
+  </EntityType>
+  <EntityType Name="v_ClientLocationActivity">
+    <Key>
+      <PropertyRef Name="clientid" />
+      <PropertyRef Name="locationid" />
+      <PropertyRef Name="email" />
+    </Key>
+    <Property Name="clientid" Type="Int32" Nullable="false" />
+    <Property Name="locationid" Type="Int32" Nullable="false" />
+    <Property Name="firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="no_visits" Type="Int32" />
+  </EntityType>
+</Schema>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="09c4f1960a814a2492f2ec88d7900d1c" Name="Diagram1">
+        <EntityTypeShape EntityType="softtehnicaModel.client" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="softtehnicaModel.order" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="softtehnicaModel.orderitem" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="softtehnicaModel.product" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="softtehnicaModel.sysdiagram" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="softtehnicaModel.FK_order_client" ManuallyRouted="false" />
+        <AssociationConnector Association="softtehnicaModel.FK_orderitems_order" ManuallyRouted="false" />
+        <AssociationConnector Association="softtehnicaModel.FK_orderitems_product" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="softtehnicaModel.location" Width="1.5" PointX="5.375" PointY="6.875" />
+        <AssociationConnector Association="softtehnicaModel.FK_order_location" />
+        <EntityTypeShape EntityType="softtehnicaModel.role" Width="1.5" PointX="0.75" PointY="8.5" />
+        <EntityTypeShape EntityType="softtehnicaModel.user" Width="1.5" PointX="0.75" PointY="5.125" />
+        <AssociationConnector Association="softtehnicaModel.FK_order_operator" />
+        <AssociationConnector Association="softtehnicaModel.FK_user_role" />
+        </Diagram>
+      <Diagram DiagramId="c221425e7813466f99f618e1c2a091ba" Name="Views" >
+        <EntityTypeShape EntityType="softtehnicaModel.v_OrderProducts" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="softtehnicaModel.v_OrderTotals" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="softtehnicaModel.v_ClientGlobalActivity" Width="1.5" PointX="3.75" PointY="3.75" />
+        <EntityTypeShape EntityType="softtehnicaModel.v_ClientLocationActivity" Width="1.5" PointX="0.75" PointY="4.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

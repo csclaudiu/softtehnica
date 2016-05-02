@@ -1,0 +1,4 @@
+C:\Users\Claudiu\documents\visual studio 2015\Projects\SoftTehnica\MODELS\bin\Debug\MODELS.dll
+C:\Users\Claudiu\documents\visual studio 2015\Projects\SoftTehnica\MODELS\bin\Debug\MODELS.pdb
+C:\Users\Claudiu\documents\visual studio 2015\Projects\SoftTehnica\MODELS\obj\Debug\MODELS.dll
+C:\Users\Claudiu\documents\visual studio 2015\Projects\SoftTehnica\MODELS\obj\Debug\MODELS.pdb
