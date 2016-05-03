@@ -8,3 +8,13 @@ C:\Users\Claudiu\documents\visual studio 2015\Projects\SoftTehnica\DATA\bin\Debu
 C:\Users\Claudiu\documents\visual studio 2015\Projects\SoftTehnica\DATA\obj\Debug\DATA.csprojResolveAssemblyReference.cache
 C:\Users\Claudiu\documents\visual studio 2015\Projects\SoftTehnica\DATA\obj\Debug\DATA.dll
 C:\Users\Claudiu\documents\visual studio 2015\Projects\SoftTehnica\DATA\obj\Debug\DATA.pdb
+C:\Users\Claudiu\Documents\Visual Studio 2015\Projects\SoftTehnica\softtehnica\DATA\bin\Debug\DATA.dll.config
+C:\Users\Claudiu\Documents\Visual Studio 2015\Projects\SoftTehnica\softtehnica\DATA\bin\Debug\DATA.dll
+C:\Users\Claudiu\Documents\Visual Studio 2015\Projects\SoftTehnica\softtehnica\DATA\bin\Debug\DATA.pdb
+C:\Users\Claudiu\Documents\Visual Studio 2015\Projects\SoftTehnica\softtehnica\DATA\bin\Debug\EntityFramework.dll
+C:\Users\Claudiu\Documents\Visual Studio 2015\Projects\SoftTehnica\softtehnica\DATA\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Claudiu\Documents\Visual Studio 2015\Projects\SoftTehnica\softtehnica\DATA\bin\Debug\EntityFramework.xml
+C:\Users\Claudiu\Documents\Visual Studio 2015\Projects\SoftTehnica\softtehnica\DATA\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Claudiu\Documents\Visual Studio 2015\Projects\SoftTehnica\softtehnica\DATA\obj\Debug\DATA.csprojResolveAssemblyReference.cache
+C:\Users\Claudiu\Documents\Visual Studio 2015\Projects\SoftTehnica\softtehnica\DATA\obj\Debug\DATA.dll
+C:\Users\Claudiu\Documents\Visual Studio 2015\Projects\SoftTehnica\softtehnica\DATA\obj\Debug\DATA.pdb

@@ -14,6 +14,6 @@ namespace MODELS.Dto
 
         public ClientDto client { get; set; }
         public LocationDto location { get; set; }
-        public ICollection<ProductDto> orderitems { get; set; }
+        public List<ProductDto> orderitems { get; set; }
     }
 }

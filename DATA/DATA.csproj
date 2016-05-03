@@ -72,12 +72,14 @@
     <Compile Include="location.cs">
       <DependentUpon>edm.tt</DependentUpon>
     </Compile>
+    <Compile Include="Metadata.cs" />
     <Compile Include="order.cs">
       <DependentUpon>edm.tt</DependentUpon>
     </Compile>
     <Compile Include="orderitem.cs">
       <DependentUpon>edm.tt</DependentUpon>
     </Compile>
+    <Compile Include="PartialClasses.cs" />
     <Compile Include="product.cs">
       <DependentUpon>edm.tt</DependentUpon>
     </Compile>

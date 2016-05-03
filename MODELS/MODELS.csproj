@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Dto\ClientDto.cs" />
     <Compile Include="Dto\LocationDto.cs" />
+    <Compile Include="Dto\OrderHistoryDto.cs" />
     <Compile Include="Dto\OrderDto.cs" />
     <Compile Include="Dto\ProductDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

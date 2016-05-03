@@ -5,24 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Restaurant"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Choose restaurant" Height="350" Width="525">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
+
         
-        <ListView x:Name="avaibleRestaurants" SelectionChanged="avaibleRestaurants_SelectionChanged" Grid.Column="2" ItemsSource="{Binding avaibleLocations}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <ListView x:Name="avaibleRestaurants" Grid.Column="2" ItemsSource="{Binding avaibleLocations}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Grid HorizontalAlignment="Stretch">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Text="{Binding location_name}" Grid.Column="0" />
-                    </Grid>
+                    <Button x:Name="btnRestaurantClick" Background="Coral" Width="130" Click="btnRestaurantClick_Click"
+                            Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.cmdRestaurantSelected}" 
+                            CommandParameter="{Binding .}" Content="{Binding location_name}" FontSize="20" Margin="4" Padding="20" />
                 </DataTemplate>
             </ListView.ItemTemplate>
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Width="500" />
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
         </ListView>
 
     </Grid>

@@ -27,12 +27,13 @@ namespace Restaurant
             VM = new LoginVM();
             this.DataContext = VM;
             VM.Username = "stoian.claudiu@gmail.com";
-            VM.Password = "Aphrodit3";
+            // VM.Password = "Aphrodit3";
         }
         public LoginVM VM { get; set; }
 
         private async void btnLogin_Click(object sender, RoutedEventArgs e)
         {
+            VM.Password = inpPassword.Password;
             var _serviceToken = new TokenService();
             var result = await _serviceToken.getTokenForLoginAsync(VM.Username, VM.Password);
             if (result)

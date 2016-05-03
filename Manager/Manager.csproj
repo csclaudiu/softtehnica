@@ -212,8 +212,11 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\clientsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\locationsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\productsController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="CustomUserStore\SoftTehnicaUser.cs" />
     <Compile Include="CustomUserStore\SoftTehnicaUserStore.cs" />
@@ -291,6 +294,21 @@
     <Content Include="Views\Statistics\Incasari.cshtml" />
     <Content Include="Views\Statistics\ClientLocationActivity.cshtml" />
     <Content Include="Views\Statistics\ClientActivity.cshtml" />
+    <Content Include="Views\clients\Create.cshtml" />
+    <Content Include="Views\clients\Delete.cshtml" />
+    <Content Include="Views\clients\Details.cshtml" />
+    <Content Include="Views\clients\Edit.cshtml" />
+    <Content Include="Views\clients\Index.cshtml" />
+    <Content Include="Views\products\Create.cshtml" />
+    <Content Include="Views\products\Delete.cshtml" />
+    <Content Include="Views\products\Details.cshtml" />
+    <Content Include="Views\products\Edit.cshtml" />
+    <Content Include="Views\products\Index.cshtml" />
+    <Content Include="Views\locations\Create.cshtml" />
+    <Content Include="Views\locations\Delete.cshtml" />
+    <Content Include="Views\locations\Details.cshtml" />
+    <Content Include="Views\locations\Edit.cshtml" />
+    <Content Include="Views\locations\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

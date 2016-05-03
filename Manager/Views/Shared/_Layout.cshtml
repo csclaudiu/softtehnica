@@ -27,7 +27,13 @@
                     <li>@Html.ActionLink("Register new manager / operator", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
                     <li>@Html.ActionLink("Statistics", "Incasari", "Statistics")</li>
                     <li>@Html.ActionLink("Best clients", "ClientActivity", "Statistics")</li>
+                    <li>@Html.ActionLink("Manage clients", "Index", "clients")</li>
+                    <li>@Html.ActionLink("Manage products", "Index", "products")</li>
+                    <li>@Html.ActionLink("Manage locations", "Index", "locations")</li>
                     
+                    
+
+
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

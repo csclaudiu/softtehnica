@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Restaurant"
         mc:Ignorable="d"
-        Title="Login" Height="300" Width="300">
+        Title="Login" Height="300" Width="500">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -17,22 +17,24 @@
             <ColumnDefinition Width="6*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
+        
         <Grid Grid.Column="1" Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="50" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="2*" />
             </Grid.ColumnDefinitions>
-            <TextBlock Text="Username :" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Center" />
+            <TextBlock Margin="10, 0, 10, 0" Text="Username :" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Center" />
             <TextBox x:Name="inpUsername" Text="{Binding Username, Mode=TwoWay}" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" FontSize="18"></TextBox>
-            <TextBlock Grid.Row="1" Text="Password :" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Center" />
-            <TextBox x:Name="inpPassword" Text="{Binding Password , Mode=TwoWay}" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" FontSize="18"></TextBox>
-            <Button x:Name="btnLogin" Grid.Column="1" Grid.Row="2" Content="Login" Click="btnLogin_Click" />
+            <TextBlock Margin="10, 0, 10, 0" Grid.Row="1" Text="Password :" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Center" />
+            <!--<TextBox x:Name="inpPassword" Text="{Binding Password , Mode=TwoWay}" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" FontSize="18"></TextBox>-->
+            <PasswordBox x:Name="inpPassword" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" FontSize="18" />
+            <Button x:Name="btnLogin" IsDefault="True" Grid.Column="1" Grid.Row="2" Content="Login" Click="btnLogin_Click" />
         </Grid>
     </Grid>
 </Window>

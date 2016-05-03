@@ -72,9 +72,13 @@ namespace Restaurant
             var newOrder = new OrderDto()
             {
                 client = VM.selectedClient,
-                location = VM.currentLocation,
-                orderitems = VM.orderedProducts
+                location = VM.currentLocation
             };
+            newOrder.orderitems = new List<ProductDto>();
+            foreach(var orderedProd in VM.orderedProducts)
+            {
+                newOrder.orderitems.Add(orderedProd);
+            }
             if (OrdersSvc.addOrder(ref newOrder))
             {
                 VM.orderedProducts.Clear();

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Restaurant"
         mc:Ignorable="d"
-        Title="Clients" Height="300" Width="300">
+        Title="Clients" Height="500" Width="500">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -14,37 +14,44 @@
         <ListView x:Name="avaibleClients" ItemsSource="{Binding clients}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionChanged="avaibleClients_SelectionChanged">
             <ListView.ItemTemplate>
                 <DataTemplate>
+                    <Border BorderThickness="0, 0, 0, 1" BorderBrush="Black">
                     <Grid HorizontalAlignment="Stretch">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="{Binding firstname}" Grid.Column="0" />
-                        <TextBlock Text="{Binding lastname}" HorizontalAlignment="Right" Grid.Column="1" />
-                        <TextBlock Text="{Binding email}" HorizontalAlignment="Right" Grid.Column="2" />
+                        <TextBlock FontSize="16" Margin="5" Text="{Binding firstname}" Grid.Column="0" />
+                        <TextBlock FontSize="16" Margin="5" Text="{Binding lastname}" HorizontalAlignment="Right" Grid.Column="1" />
+                        <TextBlock FontSize="16" Margin="5" Text="{Binding email}" HorizontalAlignment="Right" Grid.Column="2" />
                     </Grid>
+                    </Border>
                 </DataTemplate>
             </ListView.ItemTemplate>
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" />
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
         </ListView>
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1" Margin="0, 10, 30, 0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <TextBlock Text="First name" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
-            <TextBlock Grid.Row="1" Text="Last name" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
-            <TextBlock Grid.Row="2" Text="Email" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+            <TextBlock FontSize="20" Margin="10, 0, 10, 0" Text="First name" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+            <TextBlock FontSize="20" Margin="10, 0, 10, 0" Grid.Row="1" Text="Last name" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+            <TextBlock FontSize="20" Margin="10, 0, 10, 0" Grid.Row="2" Text="Email" HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
 
-            <TextBox x:Name="txtFirstName" Text="{Binding firstname, Mode=TwoWay}" Grid.Column="1"></TextBox>
-            <TextBox x:Name="txtLastName" Text="{Binding lastname, Mode=TwoWay}" Grid.Column="1" Grid.Row="1"></TextBox>
-            <TextBox x:Name="txtEmail" Text="{Binding email, Mode=TwoWay}" Grid.Column="1" Grid.Row="2"></TextBox>
+            <TextBox Margin="5" x:Name="txtFirstName" Text="{Binding firstname, Mode=TwoWay}" Grid.Column="1"></TextBox>
+            <TextBox Margin="5" x:Name="txtLastName" Text="{Binding lastname, Mode=TwoWay}" Grid.Column="1" Grid.Row="1"></TextBox>
+            <TextBox Margin="5" x:Name="txtEmail" Text="{Binding email, Mode=TwoWay}" Grid.Column="1" Grid.Row="2"></TextBox>
 
             <Button x:Name="btnNew" Content="New" Grid.Row="3" Grid.Column="1" Click="btnNew_Click" />
         </Grid>

@@ -42,7 +42,7 @@ namespace Restaurant
             VM = new OrdersVM();
             this.DataContext = VM;
 
-            foreach (var item in OrdersSvc.getAllOrders())
+            foreach (var item in OrdersSvc.getAllOrders(VM.currentLocation))
             {
                 VM.orders.Add(item);
             }

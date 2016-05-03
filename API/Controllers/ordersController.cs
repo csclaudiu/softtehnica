@@ -25,7 +25,7 @@ namespace API.Controllers
         {
             var OperatorID = User.Identity.GetUserId<int>();
 
-            var dbquery = db.orders.Where(o => o.operatorid == OperatorID).ToList();
+            var dbquery = db.orders.Where(o => o.operatorid == OperatorID).OrderByDescending(o=>o.date).ToList();
 
             var orders = dbquery.Select(o => new OrderDto()
             {

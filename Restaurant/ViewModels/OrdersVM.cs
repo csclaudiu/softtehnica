@@ -12,8 +12,8 @@ namespace Restaurant.ViewModels
     {
         public OrdersVM()
         {
-            orders = new ObservableCollection<OrderDto>();
+            orders = new ObservableCollection<OrderHistoryDto>();
         }
-        public ObservableCollection<OrderDto> orders { get; set; }
+        public ObservableCollection<OrderHistoryDto> orders { get; set; }
     }
 }

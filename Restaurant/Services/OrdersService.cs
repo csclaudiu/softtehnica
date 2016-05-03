@@ -15,17 +15,20 @@ namespace Restaurant.Services
             tkn = oToken;
         }
 
-        public List<OrderDto> getAllOrders()
+        public List<OrderHistoryDto> getAllOrders(LocationDto currentLocation)
         {
             var client = new RestClient(endpoint);
 
-            var request = new RestRequest("api/orders", Method.GET);
+            //var request = new RestRequest("api/orders", Method.GET);
+            //var request = new RestRequest("rpc/ordersHistory/showHistory", Method.GET);
+            var request = new RestRequest(string.Format("rpc/ordersHistory/showHistoryLocation/{0}", currentLocation.id), Method.GET);
             request.AddHeader("Authorization", string.Format("Bearer {0}", tkn.access_token));
-            request.RequestFormat = RestSharp.DataFormat.Json;
+            request.RequestFormat = DataFormat.Json;
 
-            var list = client.Get<List<OrderDto>>(request).Data;
 
-            return list;
+            var list = client.Get<List<OrderHistoryDto>>(request);
+
+            return list.Data;
         }
 
         public bool addOrder(ref OrderDto newOrder)

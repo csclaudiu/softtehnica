@@ -256,6 +256,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\locationsController.cs" />
     <Compile Include="Controllers\ordersController.cs" />
+    <Compile Include="Controllers\ordersHistoryController.cs" />
     <Compile Include="Controllers\productsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="CustomIdentityFramework\OperatorStore.cs" />

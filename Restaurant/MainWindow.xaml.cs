@@ -53,11 +53,10 @@ namespace Restaurant
             }
         }
 
-        private void avaibleRestaurants_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var selectedLocation = avaibleRestaurants.SelectedItem as LocationDto;
-            ApplicationState.SetValue("currentLocation", selectedLocation);
 
+
+        private void btnRestaurantClick_Click(object sender, RoutedEventArgs e)
+        {
             var pageLogin = new Login();
             pageLogin.Show();
             this.Close();
