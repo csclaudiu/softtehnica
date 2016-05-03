@@ -26,7 +26,7 @@ namespace Restaurant
             InitializeComponent();
             VM = new LoginVM();
             this.DataContext = VM;
-            VM.Username = "stoian.claudiu@gmail.com";
+            // VM.Username = "stoian.claudiu@gmail.com";
             // VM.Password = "Aphrodit3";
         }
         public LoginVM VM { get; set; }
